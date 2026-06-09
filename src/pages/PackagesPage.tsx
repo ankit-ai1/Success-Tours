@@ -1,12 +1,12 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import Page from "@/components/common/Page";
 import SEO from "@/seo/SEO";
 import PageHero from "@/components/common/PageHero";
 import Container from "@/components/ui/Container";
 import PackageCard from "@/components/cards/PackageCard";
-import { Stagger, StaggerItem } from "@/components/common/Reveal";
 import { packages } from "@/data/packages";
 import { IMG } from "@/data/images";
 import type { TripType } from "@/types";
@@ -171,9 +171,18 @@ export default function PackagesPage() {
               </div>
 
               {visible.length > 0 ? (
-                <Stagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                  {visible.map((p) => <StaggerItem key={p.id}><PackageCard pkg={p} /></StaggerItem>)}
-                </Stagger>
+                <div key={page} className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                  {visible.map((p, i) => (
+                    <motion.div
+                      key={p.id}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, delay: i * 0.07, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    >
+                      <PackageCard pkg={p} />
+                    </motion.div>
+                  ))}
+                </div>
               ) : (
                 <div className="rounded-lg border border-sand-200 bg-white p-12 text-center">
                   <p className="font-display text-xl font-bold text-primary">No packages match your filters</p>
