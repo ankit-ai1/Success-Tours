@@ -13,7 +13,7 @@ export const IMG = {
   savanna: u("1547970810-dc1eac37d174"),
   safariJeep: u("1549366021-9f761d450615"),
   cheetah: u("1456926631375-92c8ce872def"),
-  wildebeest: u("1549887534-1541e9326642"),
+  wildebeest: u("1518459384564-ecfd8e80721f"),
   // Landscapes
   kilimanjaro: u("1564507592333-c60657eea523"),
   acaciaSunset: u("1523805009345-7448845a9e53"),
